@@ -1,6 +1,11 @@
 package EmployeeTrackingApplication.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
@@ -49,7 +54,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String name, int age, int employeeNumber, String email) {
+    public Employee(String name, int age, int employeeNumber, String email, Department department) {
         this.name = name;
         this.age = age;
         this.employeeNumber = employeeNumber;
@@ -57,6 +62,7 @@ public class Employee {
         this.department = department;
         this.projectTeam = new ArrayList<>();
     }
+
 
 
 

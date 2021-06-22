@@ -15,7 +15,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class EmployeeTrackingApplicationTests {
+public class EmployeeTrackingApplicationTests {
+
+	private Employee sally;
+	private Department rnd;
+	private Employee sky;
+	private Project codeclancoin;
+
+	@Autowired
+	DepartmentRepository departmentRepository;
+
 
 	@Autowired
 	EmployeeRepository employeeRepository;
@@ -34,7 +43,7 @@ class EmployeeTrackingApplicationTests {
 	}
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 	@Test
@@ -43,7 +52,9 @@ class EmployeeTrackingApplicationTests {
 		departmentRepository.save(rnd);
 //		sally = new Employee("Sally", 256, 5678, "sally@sally.com", rnd);
 		employeeRepository.save(sally);
-
+		employeeRepository.save(sky);
+		codeclancoin.addEmployee(sky);
+		projectRepository.save(codeclancoin);
 	}
 //	@Test
 //	public void createDepartment(){
