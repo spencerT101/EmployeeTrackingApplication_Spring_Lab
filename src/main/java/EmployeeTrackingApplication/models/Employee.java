@@ -23,15 +23,42 @@ public class Employee {
     @Column(name = "email")
     private String email;
 
+    @ManyToOne
+    @JoinColumn (name="department_id", nullable=false)
+    @JsonIgnoreProperties({"employees"})
+    private Department department;
+
+    @ManyToMany
+    @JsonIgnoreProperties({"projects"})
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "employee_projects",
+            joinColumns = {@JoinColumn(
+                    name = "project_id",
+                    nullable = false,
+                    updatable = false)
+            },
+            inverseJoinColumns = { @JoinColumn(
+                    name = "employee_id",
+                    nullable = false,
+                    updatable = false
+            )}
+    )
+    private List<Employee> projectTeam;
+
+    public Employee() {
+    }
+
     public Employee(String name, int age, int employeeNumber, String email) {
         this.name = name;
         this.age = age;
         this.employeeNumber = employeeNumber;
         this.email = email;
+        this.department = department;
+        this.projectTeam = new ArrayList<>();
     }
 
-    public Employee() {
-    }
+
 
     public Long getId() {
         return id;
@@ -71,5 +98,21 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public List<Employee> getProjectTeam() {
+        return projectTeam;
+    }
+
+    public void setProjectTeam(List<Employee> projectTeam) {
+        this.projectTeam = projectTeam;
     }
 }

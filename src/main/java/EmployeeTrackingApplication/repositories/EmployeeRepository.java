@@ -1,4 +1,4 @@
-package EmployeeTrackingApplication.models.repositories;
+package EmployeeTrackingApplication.repositories;
 
 import EmployeeTrackingApplication.models.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;

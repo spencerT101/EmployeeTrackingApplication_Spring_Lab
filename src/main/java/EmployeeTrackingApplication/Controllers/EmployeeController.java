@@ -1,7 +1,7 @@
 package EmployeeTrackingApplication.Controllers;
 
 import EmployeeTrackingApplication.models.Employee;
-import EmployeeTrackingApplication.models.repositories.EmployeeRepository;
+import EmployeeTrackingApplication.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

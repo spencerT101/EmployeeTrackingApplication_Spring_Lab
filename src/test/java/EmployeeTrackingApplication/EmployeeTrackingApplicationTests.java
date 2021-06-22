@@ -1,26 +1,53 @@
 package EmployeeTrackingApplication;
 
+import EmployeeTrackingApplication.models.Department;
 import EmployeeTrackingApplication.models.Employee;
-import EmployeeTrackingApplication.models.repositories.EmployeeRepository;
-import org.junit.jupiter.api.Test;
+import EmployeeTrackingApplication.models.Project;
+import EmployeeTrackingApplication.repositories.DepartmentRepository;
+import EmployeeTrackingApplication.repositories.EmployeeRepository;
+import EmployeeTrackingApplication.repositories.ProjectRepository;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
 class EmployeeTrackingApplicationTests {
 
 	@Autowired
 	EmployeeRepository employeeRepository;
 
+	@Autowired
+	ProjectRepository projectRepository;
+
+
+
+	@Before
+	public void before(){
+		rnd = new Department("RnD");
+		sally = new Employee("Sally", 256, 5678, "sally@sally.com", rnd);
+		sky = new Employee("Sky", 28, 4657, "sky@sky.com", rnd);
+		codeclancoin = new Project("CCC", 183);
+	}
+
 	@Test
 	void contextLoads() {
 	}
 
 	@Test
-	void createEmployee() {
-//		Employee bob = new Employee("Bob", 150, 1234, "bob@bob.com");
-		Employee sally = new Employee("Sally", 256, 5678, "sally@sally.com");
+	public void createEmployee() {
+//		rnd = new Department("RnD");
+		departmentRepository.save(rnd);
+//		sally = new Employee("Sally", 256, 5678, "sally@sally.com", rnd);
 		employeeRepository.save(sally);
 
 	}
+//	@Test
+//	public void createDepartment(){
+//		departmentRepository.save(rnd);
+//
+//	}
 }
